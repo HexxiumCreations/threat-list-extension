@@ -1,3 +1,4 @@
+
 {
   "manifest_version": 2,
   "name": "Hexxium Dev",
@@ -9,10 +10,15 @@
   },
    "content_scripts": [{
    "matches": ["<all_urls>"],
-   "js": ["listener.js"]
+   "js": ["listener.js"],
+   "run_at": "document_start"
    }],
+     "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
     "permissions": [
     "activeTab",
-    "webRequest"
+	"tabs"
   ]
 }
