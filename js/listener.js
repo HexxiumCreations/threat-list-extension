@@ -10,23 +10,26 @@ function httpGet(theUrl, callback)
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
     xmlHttp.send(null);
 }
+chrome.storage.sync.get("enabled", function(response) { 
+console.log(response)
+if (response.enabled !== false) {
+	console.log(response.enabled)
 httpGet("https://hexxiumcreations.github.io/threat-list/hexxiumthreatlist.txt", function(res) {
 let easyListTxt = res
 let parsedFilterData = {};
 let urlToCheck = window.location.href;
 
 // This is the site who's URLs are being checked, not the domain of the URL being checked.
-console.log(res)
 ABPFilterParser.parse(easyListTxt, parsedFilterData);
 // ABPFilterParser.parse(someOtherListOfFilters, parsedFilterData);
 
 if (ABPFilterParser.matches(parsedFilterData, urlToCheck, {
       elementTypeMaskMap: ABPFilterParser.elementTypes.SCRIPT,
     })) {
-chrome.runtime.sendMessage({state: "bad"}, function(response) {console.log(response.res)})
+chrome.runtime.sendMessage({state: "bad", bad_url: urlToCheck}, function(response) {})
 } else {
   console.log('You should NOT block this URL!');
-}})
+}})}})
 },{"abp-filter-parser":2}],2:[function(require,module,exports){
 (function (global, factory) {
   if (typeof define === 'function' && define.amd) {

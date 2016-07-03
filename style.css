@@ -1,0 +1,22 @@
+p {font-family: 'Open Sans', sans-serif; color: rgba(0,142,198,1); margin: 0px;}
+html {
+height: 300px;
+width: 400px;
+margin: 0px;
+}
+body {margin: 0px; background-color: #D8D8D8;}
+img {
+	margin-left: 80px;
+}
+.header {
+	height: 40px;
+	width: 400px;
+}
+.status {
+	height: 20px;
+	width: 400px;
+text-align: center;
+
+}
+      .header-menu {float: left; height: 20px; width: 60px; background-color: transparent; text-align: center; border: 2px solid white; border-radius: 6px; margin-right: 20px; cursor: pointer;}
+      ul li:hover {background-color: #424242;}
