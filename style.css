@@ -21,4 +21,11 @@ text-align: center;
 
 }
       .header-menu {float: left; height: 20px; width: 60px; background-color: transparent; text-align: center; border: 2px solid white; border-radius: 6px; margin-right: 20px; cursor: pointer;}
-      ul li:hover {background-color: #424242;}
+      ul .header-menu:hover {background-color: #424242;}
+	  .discard {color: #FE2E2E; border-color: #FE2E2E}
+	  .save {color: #74DF00; border-color: #74DF00; float: right; margin-right: 40px;}
+	  .discard p {color: #FE2E2E; border-color: #FE2E2E}
+	  .save p {color: #74DF00; border-color: #74DF00}
+	  .statusa {	height: 20px;
+	width: 400px;}
+	  .advancedli {margin-top: 10px}

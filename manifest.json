@@ -2,7 +2,7 @@
 {
   "manifest_version": 2,
   "name": "Hexxium Dev",
-  "version": "1.0.0.1",
+  "version": "1.1.2.0",
   "description": "A browser plugin to avoid scammer websites",
   "browser_action": {
 	"default_icon": "png/20216216.png",
@@ -15,11 +15,15 @@
    }],
      "background": {
     "scripts": ["js/background.js"],
-    "persistent": false
+    "persistent": true
   },
     "permissions": [
     "activeTab",
 	"tabs",
 	"storage"
-  ]
+  ],
+    "web_accessible_resources": [
+	"cache/*",
+	"config.json"
+	]
 }
