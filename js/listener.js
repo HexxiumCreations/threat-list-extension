@@ -25,7 +25,7 @@ if (ABPFilterParser.matches(parsedFilterData, urlToCheck, {
       elementTypeMaskMap: ABPFilterParser.elementTypes.SCRIPT,
     })) {
 		var port = chrome.runtime.connect({name: "content_script_talk"});
-port.postMessage({state: "bad", bad_url: window.location.hostname}); port.onMessage.addListener(function(responso) { if (responso.res === "warning") {confirm("--MESSAGE FROM MALICIOUS SHIELD--\nWarning!\nThe site you are trying to access has been (black)listed as malicious!\nMake sure you know what you're doing.") }})
+port.postMessage({state: "bad", bad_url: window.location.hostname}); port.onMessage.addListener(function(responso) { if (responso.res === "warning") {confirm("--MESSAGE FROM MALICIOUS SHIELD--\nThe site you are trying to access has been (black)listed as malicious!\nDO NOT: 1. Give ANY personal information/email addresses/passwords if the website asks for it,\n2. Download/install ANYTHING from this website,\n3. Trust any phone numbers or email addresses this website is asking you to contact. They are scam.") }})
 } else {
   console.log('You should NOT block this URL!');
 }})}

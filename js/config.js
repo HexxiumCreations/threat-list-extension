@@ -20,6 +20,8 @@ $("#img").attr("src", "png/bad0.png"); $(".statusp").text("Status: On");
 console.log("haieeaaaaa")
 $(".DB").click(function() {
 	$(".DB").text("Updating database...")
+	chrome.storage.sync.set({"enabled": true}, function() {console.log("saved to true")})
+	$(".statusp").text("Status: On");
 	httpGet("https://hexxiumcreations.github.io/threat-list/hexxiumthreatlist.txt", function(data) {
 		chrome.storage.sync.get("cache_list", function(fata) {
 			if (data === fata.cache_list) {message = "Database up-to-date!"}
