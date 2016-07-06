@@ -21,12 +21,12 @@ console.log("haieeaaaaa")
 $(".DB").click(function() {
 	$(".DB").text("Updating database...")
 	chrome.storage.sync.set({"enabled": true}, function() {console.log("saved to true")})
-	$(".statusp").text("Status: On");
+	$(".statusp").text("Status: Updating");
 	httpGet("https://hexxiumcreations.github.io/threat-list/hexxiumthreatlist.txt", function(data) {
 		chrome.storage.sync.get("cache_list", function(fata) {
 			if (data === fata.cache_list) {message = "Database up-to-date!"}
-			else {message = "Database updated!"}
-	$("#img").attr("src", "png/update1.png").delay(800).queue(function(next) { $(this).attr('src','png/update2.png'); next(); }).delay(1000).queue(function(next) { $(this).attr('src','png/update3.png'); next(); }).delay(1000).queue(function(next) { $(this).attr('src','png/update4.png'); next(); }).delay(1000).queue(function(next) { $(this).attr('src','png/bad0.png'); $(".DB").text(message); next(); })
+			else {message = "Database updated!"; chrome.storage.sync.set({"cache_list": data})}
+	$("#img").attr("src", "png/update1.png").delay(800).queue(function(next) { $(this).attr('src','png/update2.png'); next(); }).delay(1000).queue(function(next) { $(this).attr('src','png/update3.png'); next(); }).delay(1000).queue(function(next) { $(this).attr('src','png/update4.png'); next(); }).delay(1000).queue(function(next) { $(this).attr('src','png/bad0.png'); $(".DB").text(message); $(".statusp").text("Status: On"); next(); })
 	})})})
 $("#img").click(function() {
 chrome.storage.sync.get("enabled", function(res) {
