@@ -10,12 +10,10 @@ function httpGet(theUrl, callback)
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
     xmlHttp.send(null);
 }
-chrome.storage.sync.get("enabled", function(response) { 
-console.log(response)
-if (response.enabled !== false) {
-	console.log(response.enabled)
-httpGet("https://hexxiumcreations.github.io/threat-list/hexxiumthreatlist.txt", function(res) {
-let easyListTxt = res
+function LISTEN() {
+chrome.storage.sync.get("cache_list", function(res) {
+console.log(res.cache_list)
+let easyListTxt = res.cache_list
 let parsedFilterData = {};
 let urlToCheck = window.location.href;
 
@@ -26,10 +24,20 @@ ABPFilterParser.parse(easyListTxt, parsedFilterData);
 if (ABPFilterParser.matches(parsedFilterData, urlToCheck, {
       elementTypeMaskMap: ABPFilterParser.elementTypes.SCRIPT,
     })) {
-chrome.runtime.sendMessage({state: "bad", bad_url: urlToCheck}, function(response) {})
+		var port = chrome.runtime.connect({name: "content_script_talk"});
+port.postMessage({state: "bad", bad_url: window.location.hostname}); port.onMessage.addListener(function(responso) { if (responso.res === "warning") {confirm("--MESSAGE FROM MALICIOUS SHIELD--\nThe site you are trying to access has been (black)listed as malicious!\nDO NOT: 1. Give ANY personal information/email addresses/passwords if the website asks for it,\n2. Download/install ANYTHING from this website,\n3. Trust any phone numbers or email addresses this website is asking you to contact. They are scam.") }})
 } else {
   console.log('You should NOT block this URL!');
-}})}})
+}})}
+chrome.storage.sync.get(["enabled", "AL"], function(response) { 
+console.log(response)
+if (response.enabled !== false && response.AL === "On") {LISTEN()}
+
+else {
+	console.log("ELSEE")
+	chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {console.log("Recieved MSG"); if (request.state === "scan") {LISTEN()}})
+}})
 },{"abp-filter-parser":2}],2:[function(require,module,exports){
 (function (global, factory) {
   if (typeof define === 'function' && define.amd) {

@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-     <script src="js/jquery-3.0.0.min.js"></script>
-	 <script src="js/config.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,700,600,400' rel='stylesheet' type='text/css'>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/config.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,700,600,400' rel='stylesheet' type='text/css'>
 
 </head>
+
 <body>
-<div class="header">
-      <ul style="list-style-type: none;">
-		<a href="popup.html"><li class="header-menu"><p><b>Status</p></li></a>
+    <div class="header">
+        <ul style="list-style-type: none;">
+            <a href="popup.html">
+                <li class="header-menu">
+                    <p><b>Status</p></li></a>
 		<a href="config.html"><li class="header-menu"><p>Settings</p></li></a>
 		<a href="info.html"><li class="header-menu"><p>Info</p></li></a>
-		<a href="hexxium.html"><li class="header-menu"><p>Hexxium</b></p></li></a>
-	  </ul>
-</div>
-<div class="status"><p class="statusp">Status: On</p></div>
-<img id="img" src="png/bad0.png" height="204" width="237">
+		<a href="hexxium.html"><li class="header-menu"><p>Hexxium</b></p>
+                </li>
+            </a>
+        </ul>
+    </div>
+    <div class="status">
+        <a href="advanced.html">
+            <p class="advanced" style="width: 100px; margin-right: 0px; float: left;">Advanced</a>
+        <p class="statusp" style="width: 200px; margin-right: 0px; float: left;">Status: On</p>
+        <p class="DB" style="width: 100px; cursor: pointer; float: left;">Update database</p>
+        </p>
+    </div>
+    <img style="cursor: pointer;" id="img" src="png/bad0.png" height="204" width="237">
 </body>
+
 </html>
