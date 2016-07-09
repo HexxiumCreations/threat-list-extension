@@ -28,4 +28,4 @@ text-align: center;
 	  .save p {color: #74DF00; border-color: #74DF00}
 	  .statusa {	height: 20px;
 	width: 400px;}
-	  .advancedli {margin-top: 10px}
+	  .advancedli {margin-top: 10px; cursor: pointer;}
