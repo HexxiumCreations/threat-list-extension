@@ -1,7 +1,7 @@
 
 {
   "manifest_version": 2,
-  "name": "Malicious Domain/IP Blocker - PRIVATE BETA",
+  "name": "Malicious Domain/IP Blocker - PUBLIC BETA",
   "version": "1.1.3.2",
   "description": "A browser plugin to avoid malicious websites",
   "browser_action": {
