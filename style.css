@@ -3,29 +3,33 @@ h1 {font-family: 'Open Sans', sans-serif; color: rgba(0,142,198,1); margin: 0px;
 
 html {
 height: 300px;
-width: 400px;
+width: 450px;
 margin: 0px;
 }
 body {margin: 0px; background-color: #D8D8D8;}
-img {
-	margin-left: 80px;
+img 
+{
+	margin-left: 105px;
 }
-.header {
+.header 
+{
 	height: 40px;
-	width: 400px;
+	width: 450px;
+	text-align: left;
 }
-.status {
-	height: 20px;
-	width: 400px;
-text-align: center;
+.status
+{
+	height: 40px;
+    	width: 400px;
+	margin-left: 23px;
+        text-align: center;
 
 }
-      .header-menu {float: left; height: 20px; width: 60px; background-color: transparent; text-align: center; border: 2px solid white; border-radius: 6px; margin-right: 20px; cursor: pointer;}
-      ul .header-menu:hover {background-color: #424242;}
+           .header-menu {float: left; height: 20px; width: 70px; background-color: transparent; text-align: center; border: 2px solid white; border-radius: 6px; margin-right: 20px; cursor: pointer;}
+           ul .header-menu:hover {background-color: #424242;}
 	  .discard {color: #FE2E2E; border-color: #FE2E2E}
 	  .save {color: #74DF00; border-color: #74DF00; float: right; margin-right: 40px;}
 	  .discard p {color: #FE2E2E; border-color: #FE2E2E}
 	  .save p {color: #74DF00; border-color: #74DF00}
-	  .statusa {	height: 20px;
-	width: 400px;}
+	  .statusa {	height: 20px;	width: 400px;}
 	  .advancedli {margin-top: 10px; cursor: pointer;}
