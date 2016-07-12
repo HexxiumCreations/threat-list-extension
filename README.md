@@ -8,4 +8,4 @@ Scammer blocker, an extension to block all those nasty, malicious, scammy websit
 
 3. Open "chrome://extensions/" in your Google Chrome browser and tick the "Developer Mode" box to enable it
 
-4.Click and drag the folder you extracted from the .zip and drop it in the Extensions area in Chrome and it should install and self-enable 
+4. Click and drag the folder you extracted from the .zip and drop it in the Extensions area in Chrome and it should install and self-enable 
