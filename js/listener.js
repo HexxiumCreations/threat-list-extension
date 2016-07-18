@@ -1,17 +1,23 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 let ABPFilterParser = require("abp-filter-parser")
-function httpGet(theUrl, callback)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() { 
+function httpGet(theUrl, callback, local) {
+   var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
+		{  callback(xmlHttp.responseText);} else {console.log(xmlHttp.status + " " + xmlHttp.readyState)}
     }
+	xmlHttp.onerror = function() {
+		document.write("A fatal error occured. Please contact support.")
+		if (local === true) {
+		window.location.replace("error.html?activity=0&GetURL=" + theUrl + "&State=" + xmlHttp.readyState + "&response=" + xmlHttp.responseText)}
+	}
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-    xmlHttp.send(null);
+
+    xmlHttp.send(null)
 }
 function LISTEN() {
 chrome.storage.sync.get("cache_list", function(res) {
+	if (chrome.extension.lastError !== undefined) {chrome.tabs.create({url: chrome.extension.getURL("error.html")})}
 console.log(res.cache_list)
 let easyListTxt = res.cache_list
 let parsedFilterData = {};
@@ -33,10 +39,18 @@ chrome.storage.sync.get(["enabled", "AL"], function(response) {
 console.log(response)
 if (response.enabled !== false && response.AL === "On") {LISTEN()}
 
-else {
+else if (response.AL === "Off") {
 	console.log("ELSEE")
 	chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {console.log("Recieved MSG"); if (request.state === "scan") {LISTEN()}})
+} else {
+	httpGet(chrome.extension.getURL("config/default.json"), function(datu) {
+		if (JSON.parse(datu).AL === "On" && response.enabled !== false) {LISTEN()}
+		else {console.log("ELSU")
+			chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {console.log("Recieved MSG"); if (request.state === "scan") {LISTEN()}})
+		}
+	})
 }})
 },{"abp-filter-parser":2}],2:[function(require,module,exports){
 (function (global, factory) {

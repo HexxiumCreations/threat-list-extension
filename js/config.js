@@ -32,10 +32,17 @@ $(document).ready(function() {
                 if (data === fata.cache_list) {
                     message = "Database up-to-date!"
                 } else {
+					                for (var index = 0; index < data.split("\n").length; index++) {
+                    if (data.split("\n")[index].charAt(0) === "!" && data.split("\n")[index].indexOf("Version: ") > -1) {
+                        DBV = data.split("\n")[index].replace("!", "").replace("Version: ", "")
+                    }
+                }
                     message = "Database updated!";
                     chrome.storage.sync.set({
-                        "cache_list": data
+                        "cache_list": data,
+						"database_version": DBV
                     })
+					
                 }
                 $("#img").attr("src", "png/update1.png").delay(800).queue(function(next) {
                     $(this).attr('src', 'png/update2.png');

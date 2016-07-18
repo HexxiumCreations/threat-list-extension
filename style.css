@@ -1,4 +1,5 @@
 p {font-family: 'Open Sans', sans-serif; color: rgba(0,142,198,1); margin: 0px;}
+h3 {font-family: 'Open Sans', sans-serif; color: rgba(0,142,198,1); margin: 0px;}
 h1 {font-family: 'Open Sans', sans-serif; color: rgba(0,142,198,1); margin: 0px;}
 
 html {
@@ -33,3 +34,5 @@ img
 	  .save p {color: #74DF00; border-color: #74DF00}
 	  .statusa {	height: 20px;	width: 400px;}
 	  .advancedli {margin-top: 10px; cursor: pointer;}
+	  .Ebody {background-color: #DF0101}
+	  .Eul {color: rgba(0,142,198,1); margin-top: 40px;}
