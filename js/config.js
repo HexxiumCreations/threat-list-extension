@@ -7,6 +7,18 @@ function httpGet(theUrl, callback) {
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
     xmlHttp.send(null);
 }
+
+
+function triggerLoadingAnimation() {
+    var loadingimage = document.getElementById('activeloading');
+    loadingimage.className = "loadingimage up";
+    setTimeout(function() {
+        loadingimage.className = "loadingimage";
+    }, 2000);
+    
+    return true;
+}
+
 $(document).ready(function() {
     chrome.storage.sync.get("enabled", function(res) {
         if (res.enabled === false) {
@@ -44,21 +56,11 @@ $(document).ready(function() {
                     })
 					
                 }
-                $("#img").attr("src", "png/update1.png").delay(800).queue(function(next) {
-                    $(this).attr('src', 'png/update2.png');
-                    next();
-                }).delay(1000).queue(function(next) {
-                    $(this).attr('src', 'png/update3.png');
-                    next();
-                }).delay(1000).queue(function(next) {
-                    $(this).attr('src', 'png/update4.png');
-                    next();
-                }).delay(1000).queue(function(next) {
-                    $(this).attr('src', 'png/bad0.png');
+                triggerLoadingAnimation();
+                setInterval(function() {
                     $(".DB").text(message);
                     $(".statusp").text("Status: On");
-                    next();
-                })
+                }, 4000);
             })
         })
     })

@@ -1,5 +1,7 @@
 p {font-family: 'Open Sans', sans-serif; color: rgba(0,142,198,1); margin: 0px;}
+
 h3 {font-family: 'Open Sans', sans-serif; color: rgba(0,142,198,1); margin: 0px;}
+
 h1 {font-family: 'Open Sans', sans-serif; color: rgba(0,142,198,1); margin: 0px;}
 
 html {
@@ -7,16 +9,18 @@ height: 300px;
 width: 450px;
 margin: 0px;
 }
-body {margin: 0px; background-color: #D8D8D8;}
+body {margin: 0px; background-color: #FCFCFC;}
+
 img 
 {
 	margin-left: 105px;
 }
 .header 
 {
+    background-color: #343538;
 	height: 40px;
 	width: 450px;
-	text-align: left;
+	text-align: center;
 }
 .status
 {
@@ -26,13 +30,66 @@ img
         text-align: center;
 
 }
-           .header-menu {float: left; height: 20px; width: 70px; background-color: transparent; text-align: center; border: 2px solid white; border-radius: 6px; margin-right: 20px; cursor: pointer;}
-           ul .header-menu:hover {background-color: #424242;}
-	  .discard {color: #FE2E2E; border-color: #FE2E2E}
-	  .save {color: #74DF00; border-color: #74DF00; float: right; margin-right: 40px;}
-	  .discard p {color: #FE2E2E; border-color: #FE2E2E}
-	  .save p {color: #74DF00; border-color: #74DF00}
-	  .statusa {	height: 20px;	width: 400px;}
-	  .advancedli {margin-top: 10px; cursor: pointer;}
-	  .Ebody {background-color: #DF0101}
-	  .Eul {color: rgba(0,142,198,1); margin-top: 40px;}
+
+
+.header-menu {
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px;
+    color: white;
+    background-color: #343538;
+	cursor: pointer;
+}
+
+.header-menu:hover {
+    background-color: #45464a;
+    
+}
+
+
+ul .header-menu:hover {background-color: #424242;}
+
+.discard {color: #FE2E2E; border-color: #FE2E2E}
+.save {color: #74DF00; border-color: #74DF00; float: right;}
+
+.discard p {color: #FE2E2E; border-color: #FE2E2E}
+
+.save p {color: #74DF00; border-color: #74DF00}
+
+.statusa {	height: 20px;	width: 400px;}
+
+.advancedli {margin-top: 10px; cursor: pointer;}
+
+.Ebody {background-color: #DF0101}
+
+.Eul {color: rgba(0,142,198,1); margin-top: 40px;}
+
+.loadingimage {
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    width: 237px;
+    height: 204px;
+    padding: 0px;
+}
+
+#activeloading {
+    height: 204px;
+    width: 237px;
+    top: 79px;
+    position: absolute;
+    clip: rect(204px,237px,204px,0px); /* When on */
+    /*background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('png/bad0.png');*/
+    transition: 2000ms ease-in-out;
+}
+
+#activeloading.up {
+    clip: rect(0px,237px,204px,0px);
+}
+
+.loadingblock {
+    width: 237px;
+    height: 204px;
+}
