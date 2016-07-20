@@ -15,10 +15,10 @@ function GetParam(name) {
 if (GetParam("activity") == 0) {
 	//local HttpGET
 			console.log(GetParam("GetURL") + " " + GetParam("State"))
-			$(".Eul").html("<li><p>Activity code: 0</p></li><li><p>Request URL: " + GetParam("GetURL") + "</p></li><li><p>State: "+ GetParam("State") +"</p></li><li><p>Generated solution: Make sure you have the newest version of the extension installed. If you do, try reinstalling the extension.</p></li>")
+			$(".Eul").html("<li><p>Activity code: 0</p></li><li><p>Request URL: " + GetParam("GetURL") + "</p></li><li><p>State: "+ GetParam("State") +"</p></li><li><p>Response: "+GetParam("Response") +"</p></li><li><p>Generated solution: Make sure you have the newest version of the extension installed. If you do, try reinstalling the extension.</p></li>")
 } else if (GetParam("activity") == 1) {
 	//"online" HttpGET
-	$(".Eul").html("<li><p>Activity code: 1</p></li><li><p>Request URL: "+GetParam("GetURL")+"</p></li><li><p>State: "+ GetParam("State") +"</p></li><li><p>Generated solution: Make sure you have a working internet connection. If you do, try again later.</p></li>")
+	$(".Eul").html("<li><p>Activity code: 1</p></li><li><p>Request URL: "+GetParam("GetURL")+"</p></li><li><p>State: "+ GetParam("State") +"</p></li><li><p>Response: "+GetParam("Response") +"</p></li><li><p>Generated solution: Make sure you have a working internet connection. If you do, try again later.</p></li>")
 } else if (GetParam("activity") == 2) {
 	//chrome.storage
 }

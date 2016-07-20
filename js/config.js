@@ -1,11 +1,18 @@
-function httpGet(theUrl, callback) {
-    var xmlHttp = new XMLHttpRequest();
+function httpGet(theUrl, callback, local) {
+   var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
+		{  callback(xmlHttp.responseText);} else {console.log(xmlHttp.status + " " + xmlHttp.readyState)}
     }
+	xmlHttp.onerror = function() {
+		document.write("A fatal error occured. Please contact support.")
+		if (local === true) {
+		window.location.replace("error.html?activity=0&GetURL=" + theUrl + "&State=" + xmlHttp.readyState + "&response=" + xmlHttp.responseText)}
+		else {window.location.replace("error.html?activity=1&GetURL="+theUrl+"&State="+xmlHttp.readyState+"&response=" + xmlHttp.responseText)}
+	}
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-    xmlHttp.send(null);
+
+    xmlHttp.send(null)
 }
 
 
@@ -39,7 +46,8 @@ $(document).ready(function() {
             console.log("saved to true")
         })
         $(".statusp").text("Status: Updating");
-        httpGet("https://hexxiumcreations.github.io/threat-list/hexxiumthreatlist.txt", function(data) {
+		httpGet(chrome.extension.getURL("config/default.json"), function(dataa) {
+        httpGet(JSON.parse(dataa).threat_list, function(data) {
             chrome.storage.sync.get("cache_list", function(fata) {
                 if (data === fata.cache_list) {
                     message = "Database up-to-date!"
@@ -62,7 +70,7 @@ $(document).ready(function() {
                     $(".statusp").text("Status: On");
                 }, 4000);
             })
-        })
+        }, false)}, true)
     })
     $("#img").click(function() {
         chrome.storage.sync.get("enabled", function(res) {

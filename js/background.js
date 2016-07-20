@@ -1,11 +1,18 @@
-function httpGet(theUrl, callback) {
-    var xmlHttp = new XMLHttpRequest();
+function httpGet(theUrl, callback, local) {
+   var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
+		{  callback(xmlHttp.responseText);} else {console.log(xmlHttp.status + " " + xmlHttp.readyState)}
     }
+	xmlHttp.onerror = function() {
+		document.write("A fatal error occured. Please contact support.")
+		if (local === true) {
+		window.location.replace("error.html?activity=0&GetURL=" + theUrl + "&State=" + xmlHttp.readyState + "&response=" + xmlHttp.responseText)}
+		else {window.location.replace("error.html?activity=1&GetURL="+theUrl+"&State="+xmlHttp.readyState+"&response=" + xmlHttp.responseText)}
+	}
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-    xmlHttp.send(null);
+
+    xmlHttp.send(null)
 }
 		httpGet(chrome.extension.getURL("config/default.json"), function(dataa) {
 chrome.storage.sync.get(["AU"], function(response) {
@@ -26,7 +33,7 @@ chrome.storage.sync.get(["AU"], function(response) {
                         console.log(DBV)
                     })
                 })
-            })
+            }, false)
     } else if (response.AU === "Off") {
         console.log("AU OFF, DO NOT UPDATE")
     } else {
@@ -47,7 +54,7 @@ chrome.storage.sync.get(["AU"], function(response) {
                         console.log(DBV)
                     })
                 })
-            })
+            }, false)
     } else {console.log("NONO")}
 	}
 })
@@ -133,4 +140,4 @@ chrome.runtime.onConnect.addListener(function(port) {
                 })
             })
     }
-})})
+})}, true)
