@@ -15,7 +15,6 @@ $(document).ready(function() {
         window.location.replace(chrome.extension.getURL("help.html"));
     });
     
-    if (getQueryVariable("url").indexOf("http://www.") > -1) {
         
         if (getQueryVariable("url").split(".")[getQueryVariable("url").split(".").length - 1].indexOf("?") > -1) {
             document.getElementById('continuebutton').href = getQueryVariable("url") + "&continuehexi=true";
@@ -23,14 +22,7 @@ $(document).ready(function() {
             document.getElementById('continuebutton').href = getQueryVariable("url") + "?continuehexi=true";
         }
             
-    } else {
-        
-        if (getQueryVariable("url").split(".")[getQueryVariable("url").split(".").length - 1].indexOf("?") > -1) {
-            document.getElementById('continuebutton').href = "http://" + getQueryVariable("url") + "&continuehexi=true";
-        } else {
-            document.getElementById('continuebutton').href = "http://" + getQueryVariable("url") + "?continuehexi=true";
-        }
-    }
+   
     
     document.getElementById('continuebutton').target = "_black";
 })
