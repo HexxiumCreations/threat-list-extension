@@ -1,3 +1,4 @@
+//The following code is property of Hexxium Creations©
 $(document).ready(function() {
     $("#web").click(function() {
         chrome.tabs.create({

@@ -1,3 +1,4 @@
+//The following code is property of Hexxium Creations©
 function GetParam(name) {
     url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");

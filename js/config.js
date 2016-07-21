@@ -1,3 +1,4 @@
+//The following code is property of Hexxium Creations©
 function httpGet(theUrl, callback, local) {
    var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
@@ -17,9 +18,11 @@ function httpGet(theUrl, callback, local) {
 
 
 function triggerLoadingAnimation() {
+	            $(".statusp").text("Status: Updating - Fetching");
     var loadingimage = document.getElementById('activeloading');
     loadingimage.className = "loadingimage up";
     setTimeout(function() {
+		            $(".statusp").text("Status: Updating - Finishing");
         loadingimage.className = "loadingimage";
     }, 2000);
     
@@ -45,7 +48,6 @@ $(document).ready(function() {
         }, function() {
             console.log("saved to true")
         })
-        $(".statusp").text("Status: Updating");
 		httpGet(chrome.extension.getURL("config/default.json"), function(dataa) {
         httpGet(JSON.parse(dataa).threat_list, function(data) {
             chrome.storage.sync.get("cache_list", function(fata) {

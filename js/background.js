@@ -1,3 +1,4 @@
+//The following code is property of Hexxium Creations©
 function httpGet(theUrl, callback, local) {
    var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
@@ -78,7 +79,7 @@ chrome.runtime.onConnect.addListener(function(port) {
                                 res: "blocked"
                             });
                             chrome.tabs.update({
-                                url: chrome.extension.getURL("blocked.html")
+                                url: chrome.extension.getURL("blocked.html?url=" + msg.bad_href)
                             })
                         } else if (response.BP === "DESTROY") {
                             port.postMessage({
@@ -113,7 +114,7 @@ chrome.runtime.onConnect.addListener(function(port) {
                                 res: "blocked"
                             });
                             chrome.tabs.update({
-                                url: chrome.extension.getURL("blocked.html")
+                                url: chrome.extension.getURL("blocked.html?url=" + msg.bad_href)
                             })
                         } else if (JSON.parse(dataa).BP === "DESTROY") {
                             port.postMessage({

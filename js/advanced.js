@@ -1,3 +1,4 @@
+//The following code is property of Hexxium Creations©
 function httpGet(theUrl, callback, local) {
    var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
