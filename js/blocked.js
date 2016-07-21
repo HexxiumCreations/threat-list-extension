@@ -15,12 +15,12 @@ $(document).ready(function() {
         window.location.replace(chrome.extension.getURL("help.html"));
     });
     
-        
+        $(".continue").click(function() {
         if (getQueryVariable("url").split(".")[getQueryVariable("url").split(".").length - 1].indexOf("?") > -1) {
-            document.getElementById('continuebutton').href = getQueryVariable("url") + "&continuehexi=true";
+            window.location.replace(getQueryVariable("url") + "&continuehexi=true");
         } else {
-            document.getElementById('continuebutton').href = getQueryVariable("url") + "?continuehexi=true";
-        }
+            window.location.replace(getQueryVariable("url") + "?continuehexi=true");
+        }})
             
    
     
