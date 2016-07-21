@@ -16,10 +16,10 @@ $(document).ready(function() {
     });
     
         $(".continue").click(function() {
-        if (getQueryVariable("url").split(".")[getQueryVariable("url").split(".").length - 1].indexOf("?") > -1) {
-            window.location.replace(getQueryVariable("url") + "&continuehexi=true");
+        if (decodeURIComponent(getQueryVariable("url")).split(".")[decodeURIComponent(getQueryVariable("url")).split(".").length - 1].indexOf("?") > -1) {
+            window.location.replace(decodeURIComponent(getQueryVariable("url")) + "&continuehexi=true");
         } else {
-            window.location.replace(getQueryVariable("url") + "?continuehexi=true");
+            window.location.replace(decodeURIComponent(getQueryVariable("url")) + "?continuehexi=true");
         }})
             
    
