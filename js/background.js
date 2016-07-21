@@ -80,7 +80,7 @@ chrome.runtime.onConnect.addListener(function(port) {
                                 res: "blocked"
                             });
                             chrome.tabs.update({
-                                url: chrome.extension.getURL("blocked.html?url=" + msg.bad_href)
+                                url: chrome.extension.getURL("blocked.html?url=" + encodeURIComponent(msg.bad_href))
                             })
                         } else if (response.BP === "DESTROY") {
                             port.postMessage({
@@ -115,7 +115,7 @@ chrome.runtime.onConnect.addListener(function(port) {
                                 res: "blocked"
                             });
                             chrome.tabs.update({
-                                url: chrome.extension.getURL("blocked.html?url=" + msg.bad_href)
+                                url: chrome.extension.getURL("blocked.html?url=" +  encodeURIComponent(msg.bad_href))
 
                             })
                         } else if (JSON.parse(dataa).BP === "DESTROY") {
