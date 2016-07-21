@@ -16,6 +16,7 @@ function httpGet(theUrl, callback, local) {
 }
 		httpGet(chrome.extension.getURL("config/default.json"), function(dataa) {
 chrome.storage.sync.get(["AU"], function(response) {
+    console.log(response);
     if (response.AU === "On") {
             httpGet(JSON.parse(dataa).threat_list, function(res) {
                 for (var index = 0; index < res.split("\n").length; index++) {
@@ -78,7 +79,7 @@ chrome.runtime.onConnect.addListener(function(port) {
                                 res: "blocked"
                             });
                             chrome.tabs.update({
-                                url: chrome.extension.getURL("blocked.html")
+                                url: chrome.extension.getURL("blocked.html?url=" + msg.bad_url) /* Add variable here */
                             })
                         } else if (response.BP === "DESTROY") {
                             port.postMessage({
@@ -113,7 +114,7 @@ chrome.runtime.onConnect.addListener(function(port) {
                                 res: "blocked"
                             });
                             chrome.tabs.update({
-                                url: chrome.extension.getURL("blocked.html")
+                                url: chrome.extension.getURL("blocked.html?url=" + msg.bad_url) /* Add variable here */
                             })
                         } else if (JSON.parse(dataa).BP === "DESTROY") {
                             port.postMessage({

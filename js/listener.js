@@ -15,6 +15,17 @@ function httpGet(theUrl, callback, local) {
 
     xmlHttp.send(null)
 }
+    
+function getQueryVariable(variable) {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+    
 function LISTEN() {
 chrome.storage.sync.get("cache_list", function(res) {
 	if (chrome.extension.lastError !== undefined) {chrome.tabs.create({url: chrome.extension.getURL("error.html")})}
@@ -27,13 +38,13 @@ let urlToCheck = window.location.href;
 ABPFilterParser.parse(easyListTxt, parsedFilterData);
 // ABPFilterParser.parse(someOtherListOfFilters, parsedFilterData);
 
-if (ABPFilterParser.matches(parsedFilterData, urlToCheck, {
+if (getQueryVariable("continuehexi") != "true" && ABPFilterParser.matches(parsedFilterData, urlToCheck, {
       elementTypeMaskMap: ABPFilterParser.elementTypes.SCRIPT,
     })) {
-		var port = chrome.runtime.connect({name: "content_script_talk"});
-port.postMessage({state: "bad", bad_url: window.location.hostname}); port.onMessage.addListener(function(responso) { if (responso.res === "warning") {confirm("--MESSAGE FROM MALICIOUS DOMAIN/IP BLOCKER--\nThe site you are trying to access has been (black)listed as malicious!\nDO NOT: 1. Give ANY personal information/email addresses/passwords if the website asks for it,\n2. Download/install ANYTHING from this website,\n3. Trust any phone numbers or email addresses this website is asking you to contact. They are scam.") }})
+	var port = chrome.runtime.connect({name: "content_script_talk"});
+    port.postMessage({state: "bad", bad_url: window.location.hostname}); port.onMessage.addListener(function(responso) { if (responso.res === "warning") {confirm("--MESSAGE FROM MALICIOUS DOMAIN/IP BLOCKER--\nThe site you are trying to access has been (black)listed as malicious!\nDO NOT: 1. Give ANY personal information/email addresses/passwords if the website asks for it,\n2. Download/install ANYTHING from this website,\n3. Trust any phone numbers or email addresses this website is asking you to contact. They are scam.") }})
 } else {
-  console.log('You should NOT block this URL!');
+  console.log('You should NOT block this URL!: ' + urlToCheck);
 }})}
 chrome.storage.sync.get(["enabled", "AL"], function(response) { 
 console.log(response)
