@@ -2,6 +2,9 @@
 {
   "manifest_version": 2,
   "name": "Malicious Domain Blocker",
+  "icons": {
+    "256": "malwareblocker.png"
+  },
   "version": "1.2.1.5",
   "description": "A browser plugin to avoid malicious websites",
   "options_page": "config.html",
