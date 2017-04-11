@@ -22,7 +22,7 @@ chrome.storage.sync.get(["AL"], function(response) {
             chrome.storage.sync.get(["enabled", "bad_url"], function(res) {
                 if (res.enabled === false) {
                     $("img").attr("src", "png/off.png");
-                    $(".statusp").text("Scammer blocker off.");
+                    $(".statusp").text("Malicious Domain Blocker is off. Go to \"Settings\" to change this");
                 } else {
                     var query = {
                         active: true,
