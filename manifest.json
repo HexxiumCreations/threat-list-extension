@@ -5,7 +5,7 @@
   "icons": {
     "256": "malwareblocker.png"
   },
-  "version": "1.2.1.5",
+  "version": "1.2.1.6",
   "description": "A browser plugin to avoid malicious websites",
   "options_page": "config.html",
   "browser_action": {

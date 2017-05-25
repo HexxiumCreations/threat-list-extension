@@ -1,4 +1,4 @@
-#Threat list blocker extension
+# Threat list blocker extension
 
 How to install this extension into Google Chrome:
 -----------
